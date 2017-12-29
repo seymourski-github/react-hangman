@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
+<div
+  className="panel"
+  id="hangman"
+>
+  <div
+    className="panel-content"
+  >
+    My test word
+  </div>
+</div>
+`;

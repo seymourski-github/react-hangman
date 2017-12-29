@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Panel } from '../../components';
 import { defaultProps } from './cfg.js';
 
 export default class Hangman extends Component {
@@ -10,7 +11,7 @@ export default class Hangman extends Component {
 
   render() {
     return (
-      <div id="hangman">{this.props.mystery}</div>
+      <Panel id="hangman">{this.props.mystery}</Panel>
     );
   }
 }
