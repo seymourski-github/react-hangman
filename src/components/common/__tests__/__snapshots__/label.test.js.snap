@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Label /> Component renders and matches our snapshot 1`] = `
+<label
+  className="label"
+  disabled={false}
+  hidden={false}
+  htmlFor={undefined}
+  style={
+    Object {
+      "alignSelf": "",
+      "flex": undefined,
+      "visibility": "visible",
+    }
+  }
+>
+  My label
+</label>
+`;

@@ -8,6 +8,21 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
   <div
     className="panel-content"
   >
+    <label
+      className="label"
+      disabled={false}
+      hidden={false}
+      htmlFor={undefined}
+      style={
+        Object {
+          "alignSelf": "",
+          "flex": undefined,
+          "visibility": "visible",
+        }
+      }
+    >
+      My test word
+    </label>
     <input
       className="input"
       disabled={false}

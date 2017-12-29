@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Input, Panel } from '../../components';
+import { Button, Input, Label, Panel } from '../../components';
 import { defaultProps } from './cfg.js';
 
 export default class Hangman extends Component {
@@ -28,6 +28,7 @@ export default class Hangman extends Component {
     const { props, state, handleInput } = this;
     return (
       <Panel id="hangman">
+        <Label text={props.mystery} />
         <Input name="guessing" handleChange={handleInput} handleBlur={handleInput} value={state.guessing} />
         <Button name="guessed" text="makes a guess" />
       </Panel>
