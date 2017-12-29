@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> Component renders and matches our snapshot 1`] = `
+<button
+  className="button"
+  disabled={false}
+  name="myButton"
+  onClick={[Function]}
+  style={null}
+  type="button"
+>
+  myButton
+</button>
+`;

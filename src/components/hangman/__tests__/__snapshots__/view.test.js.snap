@@ -8,7 +8,16 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
   <div
     className="panel-content"
   >
-    My test word
+    <button
+      className="button"
+      disabled={false}
+      name="My test word"
+      onClick={[Function]}
+      style={null}
+      type="button"
+    >
+      My test word
+    </button>
   </div>
 </div>
 `;

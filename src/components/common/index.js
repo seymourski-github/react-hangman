@@ -1,5 +1,6 @@
+import { Button } from './button';
 import { Panel } from './panel';
 
 export {
-  Panel
+  Button, Panel
 };
