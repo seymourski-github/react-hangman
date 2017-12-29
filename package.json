@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "konva": "^1.7.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-konva": "^1.6.4",
     "react-scripts": "1.0.17",
     "react-test-renderer": "^16.2.0"
   },
