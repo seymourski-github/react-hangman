@@ -1,6 +1,7 @@
 import { Button } from './button';
+import { Input } from './input';
 import { Panel } from './panel';
 
 export {
-  Button, Panel
+  Button, Input, Panel
 };

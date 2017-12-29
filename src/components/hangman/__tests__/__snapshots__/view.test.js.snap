@@ -8,15 +8,30 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
   <div
     className="panel-content"
   >
+    <input
+      className="input"
+      disabled={false}
+      id="guessing"
+      name="guessing"
+      onBlur={[Function]}
+      onChange={[Function]}
+      style={
+        Object {
+          "flex": undefined,
+        }
+      }
+      type="text"
+      value=""
+    />
     <button
       className="button"
       disabled={false}
-      name="My test word"
+      name="guessed"
       onClick={[Function]}
       style={null}
       type="button"
     >
-      My test word
+      makes a guess
     </button>
   </div>
 </div>

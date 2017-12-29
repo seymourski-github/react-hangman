@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> Component renders and matches our snapshot 1`] = `
+<input
+  className="input"
+  disabled={false}
+  id="myTextInput"
+  name="myTextInput"
+  onBlur={[Function]}
+  onChange={[Function]}
+  style={
+    Object {
+      "flex": undefined,
+    }
+  }
+  type="text"
+  value="My text input value"
+/>
+`;
