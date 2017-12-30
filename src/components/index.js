@@ -1,8 +1,8 @@
 import App from './app/app';
 import Hangman from './hangman/view';
-import { Button, Input, Label, Panel } from './common';
+import { Button, Container, Input, Label, Panel } from './common';
 
 export {
   App, Hangman,
-  Button, Input, Label, Panel
+  Button, Container, Input, Label, Panel
 }
