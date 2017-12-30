@@ -14,10 +14,10 @@ const makeConfig = (letters, activeLetters) => (
 }, []));
 
 export const Mystery = props => {
-  const { id, mystery, activeLetters, getClassName } = props;
+  const { id, mysteryWord, activeLetters, getClassName } = props;
 
   // make letter array from mystery word with any revealed/spaces
-  const letters = makeConfig(mystery.split(''), activeLetters);
+  const letters = makeConfig(mysteryWord.split(''), activeLetters);
 
   // only show label text if already revealed
   const labels = letters.map((item, i) => (
@@ -34,17 +34,16 @@ export const Mystery = props => {
 
 Mystery.propTypes = {
   activeLetters: PropTypes.object,
+  mysteryWord: PropTypes.string,
   id: PropTypes.string.isRequired,
-  mystery: PropTypes.string,
   getClassName: PropTypes.func
 };
 
 Mystery.defaultProps = {
-  activeLetters:  {},
-  mystery: '',
+  activeLetters: {},
+  mysteryWord: '',
   getClassName: (str, props) => {
     const space = str===' ';
     return `label ${space?'mystery-spacer':'mystery-letter'}`;
   }
-
 };

@@ -5,7 +5,7 @@ import { Mystery } from '../mystery';
 
 const props = {
   id: 'my-mystery-panel',
-  mystery: 'My secret word',
+  mysteryWord: 'My secret word',
   activeLetters: {
     e: true
   }

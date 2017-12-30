@@ -4,6 +4,7 @@ import { shallow } from "enzyme";
 import { Keyboard } from '../keyboard';
 
 const props = {
+  id: 'my-keyboard-panel',
   keys: [{
     name: 'a'
   }, {

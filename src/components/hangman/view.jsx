@@ -9,10 +9,12 @@ export default class Hangman extends Component {
     alphabet: PropTypes.array,
     labels: PropTypes.object,
     maxRounds: PropTypes.number,
-    mystery:  PropTypes.string,
-    renderGuesses: PropTypes.func,
-    renderKeyboard: PropTypes.func,
-    renderMystery: PropTypes.func,
+    mysteryWord: PropTypes.string,
+    renderPanel: PropTypes.shape({
+      guesses: PropTypes.func,
+      keyboard: PropTypes.func,
+      mystery: PropTypes.func,
+    })
   };
 
   constructor(props) {
@@ -30,6 +32,45 @@ export default class Hangman extends Component {
         return acc;
       }, {}));
 
+    this.mapChildProps = (nextProps, nextState) => ({
+      labels: nextProps.labels,
+      handleAction: this.handleAction,
+      handleInput: this.handleInput,
+      render: this.renderPanel
+    });
+
+    this.mapGameProps = (nextProps, nextState) => {
+      const { alphabet, maxRounds, mysteryWord } = nextProps;
+      const { activeLetters } = nextState;
+
+      const getActiveWord = () =>
+        mysteryWord.toLowerCase();
+
+      const getActiveRound = () =>
+        activeLetters && nextProps.alphabet.filter(item =>
+          activeLetters[item]).length;
+
+      const getActiveKeyboard = () =>
+        activeLetters && getActiveRound() < maxRounds;
+
+      const getActiveKeys = () =>
+        alphabet.reduce((keys, name) => {
+        keys.push({ name,
+          disabled: !getActiveKeyboard()||activeLetters[name]
+        });
+        return keys;
+      }, []);
+
+      return {
+        activeKeys: getActiveKeys(),
+        activeKeyboard: getActiveKeyboard(),
+        activeRound: getActiveRound(),
+        activeWord: getActiveWord(),
+        mysteryWord, maxRounds,
+        ...nextState
+      }
+    };
+
   }
 
   componentDidMount() {
@@ -38,6 +79,10 @@ export default class Hangman extends Component {
     });
   }
 
+  componentWillUpdate(nextProps, nextState) {
+    this.childProps = this.mapChildProps(nextProps, nextState);
+    this.gameProps = this.mapGameProps(nextProps, nextState);
+  }
 
  /**
   * event methods ...
@@ -79,46 +124,24 @@ export default class Hangman extends Component {
 
  /**
   * render methods ...
-  * renderKeyboard, renderMystery, renderGuesses -
-  *   all called from <Panel> props render
+  * renderPanel - called from <Panel> props render
   */
-  renderGuesses = (childId, childProps) => {
-    const { alphabet, labels, maxRounds } = this.props;
-    return this.props.renderGuesses({
-      handleAction: this.handleAction,
-      handleInput: this.handleInput,
-      alphabet, labels, maxRounds,
+  renderPanel = (id, childProps) => {
+    const { gameProps } = this;
+    return this.props.renderPanels[id]({
       ...childProps,
-      ...this.state
-    });
-  };
-
-  renderKeyboard = (childId, childProps) => {
-    const { alphabet, labels, maxRounds } = this.props;
-    return this.props.renderKeyboard({
-      handleAction: this.handleAction,
-      alphabet, labels, maxRounds,
-      ...childProps,
-      ...this.state
-    });
-  };
-
-  renderMystery = (childId, childProps) => {
-    const { mystery } = this.props;
-    return this.props.renderMystery({
-      ...childProps,
-      mystery,
-      ...this.state
+      ...gameProps
     });
   };
 
   render() {
+    const { childProps } = this;
     return (
       <div className="layout" id="hangman">
         <Container id="hangman-main">
-          <Panel id="guesses" render={this.renderGuesses} />
-          <Panel id="keyboard" render={this.renderKeyboard} />
-          <Panel id="mystery" render={this.renderMystery} />
+          <Panel id="guesses"  {...childProps} />
+          <Panel id="keyboard" {...childProps} />
+          <Panel id="mystery"  {...childProps} />
         </Container>
       </div>
     );
