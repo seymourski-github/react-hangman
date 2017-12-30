@@ -13,7 +13,7 @@ export const Keyboard = props => {
     />);
 
   return (
-    <Container id={id}>
+    <Container flex={true} id={id}>
       <Label text={label} flexItem="100%" />
       {buttons}
     </Container>

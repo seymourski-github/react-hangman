@@ -1,6 +1,6 @@
 import React from 'react';
 import * as actions from './constants.js';
-import { Keyboard } from '../../components';
+import { Keyboard, Mystery } from '../../components';
 
 const defaultProps = {
   alphabet: [
@@ -34,6 +34,12 @@ const defaultProps = {
       <Keyboard action={actions.LETTER_SELECT} id={id}
         handleAction={handleAction} keys={keys} label={labels.keyboard}
       />
+    );
+  },
+  renderMystery: props => {
+    const { activeLetters, id, mystery } = props;
+    return (
+      <Mystery id={id} activeLetters={activeLetters} mystery={mystery} />
     );
   }
 };

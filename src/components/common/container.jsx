@@ -45,7 +45,7 @@ Container.propTypes = {
 Container.defaultProps = {
   className: 'container',
   id: null,
-  flex: 'row',
+  flex: false,
   flexDirection: 'row',
   flexWrap: 'wrap',
   style: null

@@ -6,7 +6,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
   id="hangman"
 >
   <div
-    className="container row"
+    className="container"
     id="hangman-main"
     style={undefined}
   >
@@ -230,6 +230,231 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           >
             m
           </button>
+        </div>
+      </div>
+    </div>
+    <div
+      className="panel"
+      id="mystery"
+    >
+      <div
+        className="panel-content"
+      >
+        <div
+          className="container row"
+          id="mystery-content"
+          style={undefined}
+        >
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-spacer"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-spacer"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
         </div>
       </div>
     </div>

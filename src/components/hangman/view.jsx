@@ -10,7 +10,8 @@ export default class Hangman extends Component {
     labels: PropTypes.object,
     maxRounds: PropTypes.number,
     mystery:  PropTypes.string,
-    renderKeyboard: PropTypes.func
+    renderKeyboard: PropTypes.func,
+    renderMystery: PropTypes.func,
   };
 
   constructor(props) {
@@ -77,7 +78,7 @@ export default class Hangman extends Component {
 
  /**
   * render methods ...
-  * renderKeyboard - called from <Panel> props render
+  * renderKeyboard, renderMystery - called from <Panel> props render
   */
   renderKeyboard = (childId, childProps) => {
     const { alphabet, labels, maxRounds } = this.props;
@@ -87,13 +88,22 @@ export default class Hangman extends Component {
       ...childProps,
       ...this.state
     });
-  }
+  };
+
+  renderMystery = (childId, childProps) => {
+    const { mystery } = this.props;
+    return this.props.renderMystery({
+      ...childProps,
+      mystery,
+      ...this.state
+    });
+  };
 
   render() {
     const { props, state, handleAction, handleInput } = this;
     return (
       <div className="layout" id="hangman">
-        <Container flex="row" id="hangman-main">
+        <Container id="hangman-main">
           <Panel id="guesses">
             <Label text={props.mystery} />
             <Input name="guessing" handleChange={handleInput} value={state.guessing} />
@@ -101,6 +111,7 @@ export default class Hangman extends Component {
               action={actions.GUESS_SUBMIT} text="makes a guess" />
           </Panel>
           <Panel id="keyboard" render={this.renderKeyboard} />
+          <Panel id="mystery" render={this.renderMystery} />
         </Container>
       </div>
     );

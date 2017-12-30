@@ -1,0 +1,25 @@
+
+.mystery-letter {
+  color: #353535;
+  flex: 0 0 1em;
+  font-size: 1.6em;
+  height: 1.23em;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  text-indent: -0.1em;
+}
+
+.mystery-letter::after {
+  content: "";
+  border-bottom: 1px #353535 solid;
+  width: 90%;
+  display: block;
+  position: absolute;
+  height: inherit;
+  top: 0;
+}
+
+.mystery-spacer {
+  flex: 0 0 0.5em;
+}

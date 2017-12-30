@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Mystery /> Component renders and matches our snapshot 1`] = `
+<div
+  className="container row"
+  id="my-mystery-panel"
+  style={undefined}
+>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-spacer"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    e
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    e
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-spacer"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+  <label
+    className="label mystery-letter"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    
+  </label>
+</div>
+`;
