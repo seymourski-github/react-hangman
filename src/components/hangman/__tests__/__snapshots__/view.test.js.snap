@@ -54,6 +54,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           onClick={[Function]}
           style={null}
           type="button"
+          value=""
         >
           makes a guess
         </button>
