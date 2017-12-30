@@ -17,47 +17,57 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
       <div
         className="panel-content"
       >
-        <label
-          className="label"
-          disabled={false}
-          hidden={false}
-          htmlFor={undefined}
-          style={
-            Object {
-              "alignSelf": "",
-              "flex": undefined,
-              "visibility": "visible",
-            }
-          }
+        <div
+          className="container row"
+          id="guesses-content"
+          style={undefined}
         >
-          My secret word
-        </label>
-        <input
-          className="input"
-          disabled={false}
-          id="guessing"
-          name="guessing"
-          onBlur={[Function]}
-          onChange={[Function]}
-          style={
-            Object {
-              "flex": undefined,
+          <label
+            className="label"
+            disabled={false}
+            hidden={false}
+            htmlFor="guessing"
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "flex": "100%",
+                "visibility": "visible",
+              }
             }
-          }
-          type="text"
-          value=""
-        />
-        <button
-          className="button"
-          disabled={false}
-          name="guessed"
-          onClick={[Function]}
-          style={null}
-          type="button"
-          value=""
-        >
-          makes a guess
-        </button>
+          >
+            Make a guess
+          </label>
+          <input
+            className="input"
+            disabled={false}
+            id="guessing"
+            name="guessing"
+            onBlur={[Function]}
+            onChange={[Function]}
+            style={
+              Object {
+                "flex": "1 0 auto",
+              }
+            }
+            type="text"
+            value=""
+          />
+          <button
+            className="button"
+            disabled={false}
+            name="guessed"
+            onClick={[Function]}
+            style={
+              Object {
+                "flex": "none",
+              }
+            }
+            type="button"
+            value=""
+          >
+            ok
+          </button>
+        </div>
       </div>
     </div>
     <div

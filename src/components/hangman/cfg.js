@@ -1,6 +1,6 @@
 import React from 'react';
 import * as actions from './constants.js';
-import { Keyboard, Mystery } from '../../components';
+import { Guesses, Keyboard, Mystery } from '../../components';
 
 const defaultProps = {
   alphabet: [
@@ -10,18 +10,15 @@ const defaultProps = {
   maxRounds: 10,
   mystery: 'My secret word',
   labels: {
-    keybord: 'Choose a letter'
+    keyboard: 'Choose a letter',
+    guessing: 'Make a guess',
+    guessed: 'ok'
   },
   renderKeyboard: props => {
-
-    // use alphabet to make keys
-    const {
-      alphabet, activeLetters, handleAction, id, labels, maxRounds,
-    } = props;
-
+    const { alphabet, activeLetters, labels, maxRounds } = props;
     const activeRound = activeLetters && alphabet.filter(item => activeLetters[item]).length;
 
-    // each key is the name of a <Button>
+    // use alphabet to make keys each key is the name of a <Button>
     const keys = alphabet.reduce((keys, key) => {
       keys.push({
         name: key,
@@ -31,15 +28,19 @@ const defaultProps = {
     }, []);
 
     return (
-      <Keyboard action={actions.LETTER_SELECT} id={id}
-        handleAction={handleAction} keys={keys} label={labels.keyboard}
-      />
+      <Keyboard {...props} action={actions.LETTER_SELECT}
+        keys={keys} label={labels.keyboard} />
     );
   },
   renderMystery: props => {
     const { activeLetters, id, mystery } = props;
     return (
       <Mystery id={id} activeLetters={activeLetters} mystery={mystery} />
+    );
+  },
+  renderGuesses: props => {
+    return (
+      <Guesses action={actions.GUESS_SUBMIT} {...props} />
     );
   }
 };

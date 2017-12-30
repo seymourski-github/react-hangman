@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Container, Input, Label, Panel } from '../../components';
+import { Container, Panel } from '../../components';
 import { actions, defaultProps } from './cfg.js';
 
 export default class Hangman extends Component {
@@ -10,6 +10,7 @@ export default class Hangman extends Component {
     labels: PropTypes.object,
     maxRounds: PropTypes.number,
     mystery:  PropTypes.string,
+    renderGuesses: PropTypes.func,
     renderKeyboard: PropTypes.func,
     renderMystery: PropTypes.func,
   };
@@ -78,8 +79,20 @@ export default class Hangman extends Component {
 
  /**
   * render methods ...
-  * renderKeyboard, renderMystery - called from <Panel> props render
+  * renderKeyboard, renderMystery, renderGuesses -
+  *   all called from <Panel> props render
   */
+  renderGuesses = (childId, childProps) => {
+    const { alphabet, labels, maxRounds } = this.props;
+    return this.props.renderGuesses({
+      handleAction: this.handleAction,
+      handleInput: this.handleInput,
+      alphabet, labels, maxRounds,
+      ...childProps,
+      ...this.state
+    });
+  };
+
   renderKeyboard = (childId, childProps) => {
     const { alphabet, labels, maxRounds } = this.props;
     return this.props.renderKeyboard({
@@ -100,16 +113,10 @@ export default class Hangman extends Component {
   };
 
   render() {
-    const { props, state, handleAction, handleInput } = this;
     return (
       <div className="layout" id="hangman">
         <Container id="hangman-main">
-          <Panel id="guesses">
-            <Label text={props.mystery} />
-            <Input name="guessing" handleChange={handleInput} value={state.guessing} />
-            <Button name="guessed" handleAction={handleAction} value={state.guessing}
-              action={actions.GUESS_SUBMIT} text="makes a guess" />
-          </Panel>
+          <Panel id="guesses" render={this.renderGuesses} />
           <Panel id="keyboard" render={this.renderKeyboard} />
           <Panel id="mystery" render={this.renderMystery} />
         </Container>

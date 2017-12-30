@@ -1,6 +1,7 @@
+import { Guesses } from './guesses';
 import { Keyboard } from './keyboard';
 import { Mystery } from './mystery';
 
 export {
-  Keyboard, Mystery
+  Guesses,Keyboard, Mystery
 }
