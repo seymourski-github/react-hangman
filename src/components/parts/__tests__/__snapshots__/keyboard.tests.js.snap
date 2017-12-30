@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Keyboard /> Component renders and matches our snapshot 1`] = `
+<div
+  className="container row"
+  id={null}
+  style={undefined}
+>
+  <label
+    className="label"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": "100%",
+        "visibility": "visible",
+      }
+    }
+  >
+    Choose a letter
+  </label>
+  <button
+    className="button"
+    disabled={false}
+    name="a"
+    onClick={[Function]}
+    style={null}
+    type="button"
+    value=""
+  >
+    a
+  </button>
+  <button
+    className="button"
+    disabled={false}
+    name="b"
+    onClick={[Function]}
+    style={null}
+    type="button"
+    value=""
+  >
+    b
+  </button>
+  <button
+    className="button"
+    disabled={false}
+    name="c"
+    onClick={[Function]}
+    style={null}
+    type="button"
+    value=""
+  >
+    c
+  </button>
+</div>
+`;

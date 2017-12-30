@@ -30,7 +30,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
             }
           }
         >
-          My test word
+          My secret word
         </label>
         <input
           className="input"
@@ -58,6 +58,179 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
         >
           makes a guess
         </button>
+      </div>
+    </div>
+    <div
+      className="panel"
+      id="keyboard"
+    >
+      <div
+        className="panel-content"
+      >
+        <div
+          className="container row"
+          id="keyboard-content"
+          style={undefined}
+        >
+          <label
+            className="label"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": "100%",
+                "visibility": "visible",
+              }
+            }
+          >
+            Choose a letter
+          </label>
+          <button
+            className="button"
+            disabled={false}
+            name="a"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            a
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="b"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            b
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="c"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            c
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="d"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            d
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="e"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            e
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="f"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            f
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="g"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            g
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="h"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            h
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="i"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            i
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="j"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            j
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="k"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            k
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="l"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            l
+          </button>
+          <button
+            className="button"
+            disabled={false}
+            name="m"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            m
+          </button>
+        </div>
       </div>
     </div>
   </div>

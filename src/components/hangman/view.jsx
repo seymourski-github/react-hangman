@@ -6,16 +6,27 @@ import { actions, defaultProps } from './cfg.js';
 export default class Hangman extends Component {
   static defaultProps = defaultProps;
   static propTypes = {
-    mystery:  PropTypes.string
+    alphabet: PropTypes.array,
+    labels: PropTypes.object,
+    maxRounds: PropTypes.number,
+    mystery:  PropTypes.string,
+    renderKeyboard: PropTypes.func
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
+      activeLetters: null,
       guessing: '',
       guessed: ''
     };
+
+    this.makeLetters = props => (
+      props.alphabet.reduce((acc, letter) => {
+        acc[letter.toLowerCase()] = false;
+        return acc;
+      }, {}));
 
   }
 
@@ -36,11 +47,22 @@ export default class Hangman extends Component {
     switch(action) {
       case actions.GAME_BEGIN:
         return this.setState({
+          activeLetters: this.makeLetters(this.props),
           guessing: '',
           guessed: ''
         });
       case actions.GUESS_SUBMIT:
         return this.setState({ guessed: value });
+      case actions.LETTER_SELECT:
+        return this.setState((prevState, props) => {
+          const newVal = { [name]: true };
+          return {
+            activeLetters: {
+              ...prevState.activeLetters,
+              ...newVal
+            }
+          };
+        });
       default:
         break;
     }
@@ -51,6 +73,20 @@ export default class Hangman extends Component {
     return this.setState((prevState, props) => ({
       [name]: value
     }));
+  }
+
+ /**
+  * render methods ...
+  * renderKeyboard - called from <Panel> props render
+  */
+  renderKeyboard = (childId, childProps) => {
+    const { alphabet, labels, maxRounds } = this.props;
+    return this.props.renderKeyboard({
+      handleAction: this.handleAction,
+      alphabet, labels, maxRounds,
+      ...childProps,
+      ...this.state
+    });
   }
 
   render() {
@@ -64,6 +100,7 @@ export default class Hangman extends Component {
             <Button name="guessed" handleAction={handleAction} value={state.guessing}
               action={actions.GUESS_SUBMIT} text="makes a guess" />
           </Panel>
+          <Panel id="keyboard" render={this.renderKeyboard} />
         </Container>
       </div>
     );

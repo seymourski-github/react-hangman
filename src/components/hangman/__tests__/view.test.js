@@ -4,7 +4,8 @@ import { shallow } from "enzyme";
 import Hangman from '../view';
 
 const props = {
-  mystery: 'My test word'
+  alphabet: ['a','b','c','d','e','f','g','h','i','j','k','l','m'],
+  mystery: 'My secret word'
 };
 
 describe('<Hangman /> Component', function() {
@@ -20,7 +21,5 @@ describe('<Hangman /> Component', function() {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-
 
 });
