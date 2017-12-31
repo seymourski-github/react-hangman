@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Panel } from '../../components';
 import { actions, defaultProps } from './cfg.js';
+import * as setNextState from './state';
 
 export default class Hangman extends Component {
   static defaultProps = defaultProps;
@@ -41,7 +42,7 @@ export default class Hangman extends Component {
 
     this.mapGameProps = (nextProps, nextState) => {
       const { alphabet, maxRounds, mysteryWord } = nextProps;
-      const { activeLetters } = nextState;
+      const { activeLetter, activeLetters } = nextState;
 
       const getActiveWord = () =>
         mysteryWord.toLowerCase();
@@ -51,7 +52,10 @@ export default class Hangman extends Component {
           activeLetters[item]).length;
 
       const getActiveKeyboard = () =>
-        activeLetters && getActiveRound() < maxRounds;
+        !activeLetter && activeLetters && getActiveRound()<maxRounds;
+
+      const getActiveGuesses = () =>
+        activeLetter && getActiveRound()<=maxRounds;
 
       const getActiveKeys = () =>
         alphabet.reduce((keys, name) => {
@@ -62,6 +66,7 @@ export default class Hangman extends Component {
       }, []);
 
       return {
+        activeGuesses: getActiveGuesses(),
         activeKeys: getActiveKeys(),
         activeKeyboard: getActiveKeyboard(),
         activeRound: getActiveRound(),
@@ -91,24 +96,27 @@ export default class Hangman extends Component {
   */
   handleAction = e => {
     const { action, name, value } = e;
+
+    const {
+      onGameBegin, onGuessSubmit, onLetterSelect
+    } = setNextState;
+
     switch(action) {
       case actions.GAME_BEGIN:
-        return this.setState({
-          activeLetters: this.makeLetters(this.props),
-          guessing: '',
-          guessed: ''
+        return this.setState((prevState, props) => {
+          return onGameBegin(prevState, props, {
+            activeLetters: this.makeLetters
+          });
         });
       case actions.GUESS_SUBMIT:
-        return this.setState({ guessed: value });
+        return this.setState((prevState, props) => {
+          return onGuessSubmit(prevState, props, value);
+        });
       case actions.LETTER_SELECT:
         return this.setState((prevState, props) => {
-          const newVal = { [name]: true };
-          return {
-            activeLetters: {
-              ...prevState.activeLetters,
-              ...newVal
-            }
-          };
+          return onLetterSelect(prevState, props, {
+            [name]: true
+          });
         });
       default:
         break;
@@ -128,6 +136,7 @@ export default class Hangman extends Component {
   */
   renderPanel = (id, childProps) => {
     const { gameProps } = this;
+    
     return this.props.renderPanels[id]({
       ...childProps,
       ...gameProps
@@ -139,9 +148,9 @@ export default class Hangman extends Component {
     return (
       <div className="layout" id="hangman">
         <Container id="hangman-main">
+          <Panel id="mystery"  {...childProps} />
           <Panel id="guesses"  {...childProps} />
           <Panel id="keyboard" {...childProps} />
-          <Panel id="mystery"  {...childProps} />
         </Container>
       </div>
     );

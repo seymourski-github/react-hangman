@@ -15,18 +15,20 @@ const defaultProps = {
     guessed: 'ok'
   },
   renderPanels: {
-    guesses: props => {
-      return (
-        <Guesses action={actions.GUESS_SUBMIT} {...props} />
-      );
-    },
-    keyboard: props => {
-      const { activeKeys, labels } = props;
-      return (
-        <Keyboard action={actions.LETTER_SELECT} {...props}
-          keys={activeKeys} label={labels.keyboard} />
-      );
-    },
+    guesses: props => (
+      <Guesses {...props}
+        action={actions.GUESS_SUBMIT}
+        disabled={!props.activeGuesses}
+      />
+    ),
+    keyboard: props => (
+      <Keyboard {...props}
+        action={actions.LETTER_SELECT}
+        disabled={!props.activeKeyboard}
+        keys={props.activeKeys}
+        label={props.labels.keyboard}
+      />
+    ),
     mystery: props => {
       return (<Mystery {...props} />);
     }

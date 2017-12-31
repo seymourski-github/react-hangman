@@ -5,20 +5,22 @@ import { Button, Container, Input, Label } from '../../components';
 export const Guesses = props => {
 
   const {
-    action, id, labels, guessing, handleAction, handleInput
+    action, disabled, id, labels, guessing, handleAction, handleInput
   } = props;
 
   const mapProps = name => ({
-    name, handleAction,
+    name, handleAction, disabled,
     handleChange: handleInput,
     text: labels[name],
-    style:  { flex: 'none' },
     value: guessing
   });
 
   return (
     <Container flex="row" id={id}>
-      <Label alignSelf="flex-end" flexItem="100%" htmlFor="guessing" text={labels.guessing} />
+      <Label alignSelf="flex-end" flexItem="100%" htmlFor="guessing"
+        text={labels.guessing}
+        visible={!disabled} 
+      />
       <Input {...mapProps('guessing', props)} autoFocus flexItem="1 0 auto" />
       <Button {...mapProps('guessed', props)} action={action} flexItem="none" />
     </Container>
@@ -28,6 +30,7 @@ export const Guesses = props => {
 
 Guesses.propTypes = {
   action: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
   guessing: PropTypes.string,
   guessed: PropTypes.string,
   id: PropTypes.string.isRequired,

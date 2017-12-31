@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 import { Button, Container, Label } from '../common';
 
 export const Keyboard = props => {
-  const { action, keys, id, handleAction, label } = props;
+  const { action, disabled, keys, id, handleAction, label } = props;
 
   const buttons = keys.map(key =>
     <Button {...key}
       key={key.name}
+      disabled={key.disabled||disabled}
       action={action}
       handleAction={handleAction}
     />);
 
   return (
     <Container flex={true} id={id}>
-      <Label text={label} flexItem="100%" />
+      <Label text={label} visible={!disabled} flexItem="100%" />
       {buttons}
     </Container>
   );
@@ -22,6 +23,7 @@ export const Keyboard = props => {
 
 Keyboard.propTypes = {
   action: PropTypes.string,
+  disabled: PropTypes.bool,
   id: PropTypes.string.isRequired,
   keys: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired
@@ -32,6 +34,7 @@ Keyboard.propTypes = {
 
 Keyboard.defaultProps = {
   action: 'ACTION_SENT_WITH_HANDLE_ACTION',
+  disabled: false,
   label: 'Choose a letter',
   handleAction: () => console.log('handleAction button fail')
 };
