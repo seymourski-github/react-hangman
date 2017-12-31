@@ -5,6 +5,9 @@ import Hangman from '../view';
 
 const props = {
   alphabet: ['a','b','c','d','e','f','g','h','i','j','k','l','m'],
+  data: [{
+    name: 'testy mcctest'
+  }],
   mystery: 'My secret word',
   display: {
     gallowsOn: false,

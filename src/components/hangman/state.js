@@ -1,18 +1,20 @@
 import * as constants from './constants.js';
 
 const onGameBegin = (prevState, props, newVal) => ({
-  activeLetters: newVal,
   activeLetter: null,
   activeRound: 0,
-  activeWord: props.mysteryWord,
   guessing: '',
   guessed: '',
-  result: null
+  result: null,
+  ...newVal
 });
 
 const onGameResult = (prevState, props, newVal) => {
-  const lost=newVal===constants.GAME_LOST;
-  const activeWord = lost? props.labels.loser:prevState.activeWord;
+  const lost = newVal===constants.GAME_LOST;
+  const activeWord = lost
+    ? props.labels.loser
+    : prevState.activeWord;
+
   return {
     activeLetters: null,
     activeLetter: null,

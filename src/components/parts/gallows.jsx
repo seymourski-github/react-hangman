@@ -66,7 +66,7 @@ export default class Gallows extends Component {
     return (
       <Container>
         <Stage width={width} height={height}>
-          <Layer>
+          <Layer fill={'#e7e6ff'}>
             {this.renderItems(items, this.props)}
             <Text x={width-170} y={height-50} fill="red"
               text={(item && item.text) || null} fontSize={24}

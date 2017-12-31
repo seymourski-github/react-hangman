@@ -3,7 +3,7 @@ import { Circle, Line, Rect } from "react-konva";
 
 const itemsList = {
   background: {
-    config: { x: 5, y: 240, width: 280, height: 30, fill: 'green' },
+    config: { x: 0, y: 240, width: 280, height: 30, fill: 'green' },
     type: Rect
   },
   scaffold1:  {

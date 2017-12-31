@@ -8,20 +8,22 @@ export default class Hangman extends Component {
   static defaultProps = defaultProps;
   static propTypes = {
     alphabet: PropTypes.array,
+    data: PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired
+    })).isRequired,
     display: PropTypes.shape({
       gallowsOn: PropTypes.bool,
       roundToggleOn: PropTypes.bool
     }),
     labels: PropTypes.object,
     maxRounds: PropTypes.number,
-    mysteryWord: PropTypes.string,
     renderPanel: PropTypes.shape({
       footer: PropTypes.func,
       gallows: PropTypes.func,
       guesses: PropTypes.func,
       keyboard: PropTypes.func,
       mystery: PropTypes.func,
-    }),
+    })
   };
 
   constructor(props) {
@@ -42,16 +44,23 @@ export default class Hangman extends Component {
         return acc;
       }, {}));
 
+    this.makeWord = props => {
+      const item = [Math.round(Math.random()*(props.data.length-1))];
+      return props.data[item].name;
+    };
+
     this.mapChildProps = (nextProps, nextState) => ({
-      labels: nextProps.labels,
       handleAction: this.handleAction,
-      handleInput: this.handleInput,
+      labels: nextProps.labels,
       render: this.renderPanel
     });
 
     this.mapGameProps = (nextProps, nextState) => {
       const { maxRounds } = nextProps;
-      const { activeLetter, activeLetters, activeRound, result } = nextState;
+
+      const {
+        activeLetter, activeLetters, activeRound, result
+      } = nextState;
 
       const getActiveKeyboard = () =>
         !result && !activeLetter && activeRound<maxRounds;
@@ -71,8 +80,7 @@ export default class Hangman extends Component {
         activeKeys: getActiveKeys(),
         activeKeyboard: getActiveKeyboard(),
         activeGuesses: getActiveGuesses(),
-        maxRounds,
-        ...nextState
+        maxRounds, ...nextState
       }
     };
 
@@ -90,12 +98,10 @@ export default class Hangman extends Component {
   }
 
  /**
-  * event methods ...
-  * handleAction - handles actions changing state
-  * handleInput - handles controlled inputs changing state
+  * events ...
   */
   handleAction = e => {
-    const { action, name, value } = e;
+    const { action, name, target, value } = e;
 
     const {
       onGameBegin, onGameResult, onGuessSubmit, onLetterSelect
@@ -104,17 +110,23 @@ export default class Hangman extends Component {
     switch(action) {
       case actions.GAME_BEGIN:
         return this.setState((prevState, props) => {
-          const newVal=this.makeLetters(props);
-          return onGameBegin(prevState, props, newVal);
+          return onGameBegin(prevState, props, {
+            activeLetters: this.makeLetters(props),
+            activeWord: this.makeWord(props)
+          });
         });
+
       case actions.GAME_RESTART:
         return this.setState((prevState, props) => {
-          const newVal=this.makeLetters(props);
-          return onGameBegin(prevState, props, newVal);
+          return onGameBegin(prevState, props, {
+            activeLetters: this.makeLetters(props),
+            activeWord: this.makeWord(props)
+          });
         });
+
       case actions.GUESS_SUBMIT:
         return this.setState((prevState, props) => {
-          if(value.toLowerCase()===props.mysteryWord.toLowerCase()) {
+          if(value.toLowerCase()===prevState.activeWord.toLowerCase()) {
             return onGameResult(prevState, props, actions.GAME_WON);
           } else if(prevState.activeRound >= props.maxRounds) {
             return onGameResult(prevState, props, actions.GAME_LOST);
@@ -122,22 +134,20 @@ export default class Hangman extends Component {
             return onGuessSubmit(prevState, props, value);
           }
         });
+
       case actions.LETTER_SELECT:
         return this.setState((prevState, props) => {
           return onLetterSelect(prevState, props, {
             [name]: true
           });
         });
-      default:
-        break;
-    }
-  }
 
-  handleInput = e => {
-    const { name, value } = e.target;
-    return this.setState((prevState, props) => ({
-      [name]: value
-    }));
+      default:
+        //handles controlled inputs changing state
+        return this.setState((prevState, props) => ({
+          [target.name]: target.value
+        }));
+    }
   }
 
  /**
@@ -145,21 +155,19 @@ export default class Hangman extends Component {
   * renderPanel - called from <Panel> props render
   */
   renderPanel = (id, childProps) => {
-    const { gameProps } = this;
-    const { activeGuesses, activeKeyboard } = gameProps;
+    const { activeGuesses, activeKeyboard } = this.gameProps;
     const { gallowsOn, roundToggleOn } = this.props.display;
+    const hideGuesses = roundToggleOn&&!activeGuesses;
+    const hideKeyboard = roundToggleOn&&!activeKeyboard;
 
-    if(id==='gallows' && !gallowsOn) {
+    if((id==='gallows'&& !gallowsOn) || (id==='guesses' && hideGuesses)
+      ||( id==='keyboard' && hideKeyboard)) {
       return null;
-    } else if(id==='guesses'&&roundToggleOn&&!activeGuesses) {
-      return null;
-    } else if(id==='keyboard'&&roundToggleOn&&!activeKeyboard) {
-      return null;
-    };
+    }
 
     return this.props.renderPanels[id]({
       ...childProps,
-      ...gameProps
+      ...this.gameProps
     });
   };
 

@@ -4,13 +4,11 @@ import { Button, Container, Input, Label } from '../../components';
 
 export const Guesses = props => {
 
-  const {
-    action, disabled, id, labels, guessing, handleAction, handleInput
-  } = props;
+  const { action, disabled, id, labels, guessing, handleAction } = props;
 
   const mapProps = name => ({
     name, handleAction, disabled,
-    handleChange: handleInput,
+    handleChange: handleAction,
     text: labels[name],
     value: guessing
   });
@@ -19,7 +17,7 @@ export const Guesses = props => {
     <Container flex="row" id={id}>
       <Label alignSelf="flex-end" flexItem="100%" htmlFor="guessing"
         text={labels.guessing}
-        visible={!disabled} 
+        visible={!disabled}
       />
       <Input {...mapProps('guessing', props)} autoFocus flexItem="1 0 auto" />
       <Button {...mapProps('guessed', props)} action={action} flexItem="none" />
@@ -29,24 +27,22 @@ export const Guesses = props => {
 };
 
 Guesses.propTypes = {
+  handleAction: PropTypes.func,
   action: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   guessing: PropTypes.string,
   guessed: PropTypes.string,
   id: PropTypes.string.isRequired,
   labels: PropTypes.object,
-  handleAction: PropTypes.func,
-  handleInput: PropTypes.func
 };
 
 Guesses.defaultProps = {
+  handleAction: () => console.log('handleAction not setup'),
   action: 'ACTION_OF_BUTTON',
-  guessing: 'guess being typed and sent via handleInput',
-  guessed: 'last guess sent using handleAction',
+  guessing: 'guess onChange sent via handleAction',
+  guessed: 'guessed onClick sent via handleAction & action',
   labels: {
     input: 'Make a guess',
     button: 'ok'
   },
-  handleAction: () => console.log('handleAction button fail'),
-  handleInput: () => console.log('handleInput button fail'),
 };

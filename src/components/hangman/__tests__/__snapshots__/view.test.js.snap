@@ -59,66 +59,6 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
             
           </label>
           <label
-            className="label mystery-spacer"
-            disabled={false}
-            hidden={false}
-            htmlFor={undefined}
-            style={
-              Object {
-                "alignSelf": "",
-                "flex": undefined,
-                "visibility": "visible",
-              }
-            }
-          >
-            
-          </label>
-          <label
-            className="label mystery-letter"
-            disabled={false}
-            hidden={false}
-            htmlFor={undefined}
-            style={
-              Object {
-                "alignSelf": "",
-                "flex": undefined,
-                "visibility": "visible",
-              }
-            }
-          >
-            
-          </label>
-          <label
-            className="label mystery-letter"
-            disabled={false}
-            hidden={false}
-            htmlFor={undefined}
-            style={
-              Object {
-                "alignSelf": "",
-                "flex": undefined,
-                "visibility": "visible",
-              }
-            }
-          >
-            
-          </label>
-          <label
-            className="label mystery-letter"
-            disabled={false}
-            hidden={false}
-            htmlFor={undefined}
-            style={
-              Object {
-                "alignSelf": "",
-                "flex": undefined,
-                "visibility": "visible",
-              }
-            }
-          >
-            
-          </label>
-          <label
             className="label mystery-letter"
             disabled={false}
             hidden={false}
@@ -165,6 +105,51 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           </label>
           <label
             className="label mystery-spacer"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          >
+            
+          </label>
+          <label
+            className="label mystery-letter"
             disabled={false}
             hidden={false}
             htmlFor={undefined}
