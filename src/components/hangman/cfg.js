@@ -1,6 +1,6 @@
 import React from 'react';
 import * as actions from './constants.js';
-import { Gallows, Guesses, Keyboard, Mystery } from '../../components';
+import { Footer, Gallows, Guesses, Keyboard, Mystery } from '../../components';
 
 const defaultProps = {
   alphabet: [
@@ -14,12 +14,26 @@ const defaultProps = {
   maxRounds: 10,
   mysteryWord: 'My secret word',
   labels: {
+    counter: props => {
+      const count = props.maxRounds-props.activeRound;
+      if(count > 0 && count < 10) {
+        return `You can choose ${count} more letters`;
+      }
+      return '';
+    },
     keyboard: 'Choose a letter',
     guessing: 'Make a guess',
     guessed: 'ok',
-    loser: 'YOU LOSE !!'
+    loser: 'YOU LOSE !!',
+    restart: 'Restart'
   },
   renderPanels: {
+    footer: props => (
+      <Footer {...props}
+        action={actions.GAME_RESTART}
+        name="restart"
+      />
+    ),
     gallows: props => (
       <Gallows {...props}
         activeIndex={props.activeRound||0}

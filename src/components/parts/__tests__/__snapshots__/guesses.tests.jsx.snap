@@ -20,6 +20,7 @@ exports[`<Guesses /> Component renders and matches our snapshot 1`] = `
     }
   />
   <input
+    autoFocus={true}
     className="input"
     disabled={false}
     id="guessing"

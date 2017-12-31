@@ -2,16 +2,61 @@
   box-sizing: border-box;
 }
 
-#guesses {
-  max-width: 300px;
-}
-
-
 body {
   margin: 0;
   padding: 0;
   color: #555;
   font: 400 14px/1.6 "Open Sans",sans-serif;
+}
+
+
+#hangman {
+  height: 96vh;
+  margin: 2vh auto;
+  border: 1px solid #ddd;
+  width: inherit;
+  max-width: 640px;
+  justify-content: space-between;
+}
+
+#footer {
+  height: 48px;
+  width: 100%;
+  padding: 0 2vh;
+}
+
+#footer-content {
+  align-items: center;
+  justify-content: space-between;
+}
+
+#mystery {
+  height: 40px;
+  flex: 0 0 100%;
+}
+
+#mystery-content {
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#guesses,
+#keyboard {
+  flex: 0 0 60%;
+  max-width: 352px;
+  min-width: 352px;
+  max-height: 34%;
+  min-height: 90px;
+}
+
+#guesses > .panel-content {
+  margin: 0 auto;
+  width: 80%;
+}
+
+#gallows {
+  flex: 0 0 38%;
+  align-self: flex-start;
 }
 
 .layout {
@@ -29,4 +74,18 @@ body {
 .layout .row {
   display: flex;
   flex-flow: row wrap;
+}
+
+.layout > .row {
+    justify-content: center;
+}
+
+.panel-content {
+  height: 100%;
+}
+
+.panel-content > .row {
+  height: inherit;
+  align-content: center;
+  justify-content: center;
 }

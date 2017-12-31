@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const onBlur = handleInput => e => handleInput(e);
 const onChange = handleInput => e => handleInput(e);
 
-const mapProps = ({ className, disabled, id, name, type, value }) => ({
+const mapProps = ({ autoFocus, className, disabled, id, name, type, value }) => ({
   id: id || name,
-  className, disabled, name, type, value
+  autoFocus, className, disabled, name, type, value
 });
 
 const mapStyle =({ flexItem, style }) => ({

@@ -6,7 +6,8 @@ const onGameBegin = (prevState, props, newVal) => ({
   activeRound: 0,
   activeWord: props.mysteryWord,
   guessing: '',
-  guessed: ''
+  guessed: '',
+  result: null
 });
 
 const onGameResult = (prevState, props, newVal) => {

@@ -16,6 +16,7 @@ export default class Hangman extends Component {
     maxRounds: PropTypes.number,
     mysteryWord: PropTypes.string,
     renderPanel: PropTypes.shape({
+      footer: PropTypes.func,
       gallows: PropTypes.func,
       guesses: PropTypes.func,
       keyboard: PropTypes.func,
@@ -106,6 +107,11 @@ export default class Hangman extends Component {
           const newVal=this.makeLetters(props);
           return onGameBegin(prevState, props, newVal);
         });
+      case actions.GAME_RESTART:
+        return this.setState((prevState, props) => {
+          const newVal=this.makeLetters(props);
+          return onGameBegin(prevState, props, newVal);
+        });
       case actions.GUESS_SUBMIT:
         return this.setState((prevState, props) => {
           if(value.toLowerCase()===props.mysteryWord.toLowerCase()) {
@@ -161,11 +167,14 @@ export default class Hangman extends Component {
     const { childProps } = this;
     return (
       <div className="layout" id="hangman">
-        <Container id="hangman-main">
+        <Container flex={true} flexItem={'1 1 100%'}>
           <Panel id="mystery"  {...childProps} />
           <Panel id="gallows"  {...childProps} />
           <Panel id="guesses"  {...childProps} />
           <Panel id="keyboard" {...childProps} />
+        </Container>
+        <Container flex={true} flexItem={'none'}>
+          <Panel id="footer"   {...childProps} />
         </Container>
       </div>
     );

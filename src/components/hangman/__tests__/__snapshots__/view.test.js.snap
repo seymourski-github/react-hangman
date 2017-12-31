@@ -6,9 +6,15 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
   id="hangman"
 >
   <div
-    className="container"
-    id="hangman-main"
-    style={undefined}
+    className="container row"
+    id={null}
+    style={
+      Object {
+        "flex": "1 1 100%",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+      }
+    }
   >
     <div
       className="panel"
@@ -404,6 +410,57 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
             value=""
           >
             m
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="container row"
+    id={null}
+    style={
+      Object {
+        "flex": "none",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+      }
+    }
+  >
+    <div
+      className="panel"
+      id="footer"
+    >
+      <div
+        className="panel-content"
+      >
+        <div
+          className="container row"
+          id="footer-content"
+          style={undefined}
+        >
+          <label
+            className="label"
+            disabled={false}
+            hidden={false}
+            htmlFor={undefined}
+            style={
+              Object {
+                "alignSelf": "",
+                "flex": undefined,
+                "visibility": "visible",
+              }
+            }
+          />
+          <button
+            className="button"
+            disabled={false}
+            name="restart"
+            onClick={[Function]}
+            style={null}
+            type="button"
+            value=""
+          >
+            restart
           </button>
         </div>
       </div>

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Guesses /> Component renders and matches our snapshot 1`] = `
+<div
+  className="container row"
+  id="my-footer-panel"
+  style={undefined}
+>
+  <label
+    className="label"
+    disabled={false}
+    hidden={false}
+    htmlFor={undefined}
+    style={
+      Object {
+        "alignSelf": "",
+        "flex": undefined,
+        "visibility": "visible",
+      }
+    }
+  >
+    my counter
+  </label>
+  <button
+    className="button"
+    disabled={false}
+    name="restart"
+    onClick={[Function]}
+    style={null}
+    type="button"
+    value=""
+  >
+    restart
+  </button>
+</div>
+`;
