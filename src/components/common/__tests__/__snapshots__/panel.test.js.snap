@@ -1,12 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Panel /> Component renders and matches our snapshot 1`] = `
-<div
-  className="panel"
-  id="my-panel"
->
-  <div
-    className="panel-content"
-  />
-</div>
-`;
+exports[`<Panel /> Component renders and matches our snapshot 1`] = `null`;

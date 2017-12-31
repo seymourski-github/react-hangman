@@ -39,11 +39,7 @@ exports[`<Guesses /> Component renders and matches our snapshot 1`] = `
     disabled={false}
     name="guessed"
     onClick={[Function]}
-    style={
-      Object {
-        "flex": "none",
-      }
-    }
+    style={null}
     type="button"
     value="guess being typed and sent via handleInput"
   >

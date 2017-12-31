@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const renderProps = (id, props) => {
+  if(!props.render) return null;
   return props.render(id, {
     ...props,
     id: `${id}-content`
@@ -9,14 +10,14 @@ const renderProps = (id, props) => {
 };
 
 export const Panel = props => {
-  const { className, id, children, render } = props;
+  const { className, id, children } = props;
+  const content = renderProps(id, props);
 
-  if(!render && !children) return;
-
+  if(!content && !children) return null;
   return (
     <div className={className} id={id}>
       <div className={`${className}-content`}>
-        {children || renderProps(id, props)}
+        {children || content}
       </div>
     </div>
   );
@@ -29,7 +30,7 @@ Panel.propTypes = {
     PropTypes.string
   ]),
   id: PropTypes.string.isRequired,
-  render: PropTypes.func,
+  render: PropTypes.func
 };
 
 Panel.defaultProps = {

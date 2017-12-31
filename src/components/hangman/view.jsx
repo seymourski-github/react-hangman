@@ -8,14 +8,19 @@ export default class Hangman extends Component {
   static defaultProps = defaultProps;
   static propTypes = {
     alphabet: PropTypes.array,
+    display: PropTypes.shape({
+      gallowsOn: PropTypes.bool,
+      roundToggleOn: PropTypes.bool
+    }),
     labels: PropTypes.object,
     maxRounds: PropTypes.number,
     mysteryWord: PropTypes.string,
     renderPanel: PropTypes.shape({
+      gallows: PropTypes.func,
       guesses: PropTypes.func,
       keyboard: PropTypes.func,
       mystery: PropTypes.func,
-    })
+    }),
   };
 
   constructor(props) {
@@ -136,7 +141,17 @@ export default class Hangman extends Component {
   */
   renderPanel = (id, childProps) => {
     const { gameProps } = this;
-    
+    const { activeGuesses, activeKeyboard } = gameProps;
+    const { gallowsOn, roundToggleOn } = this.props.display;
+
+    if(id==='gallows' && !gallowsOn) {
+      return null;
+    } else if(id==='guesses'&&roundToggleOn&&!activeGuesses) {
+      return null;
+    } else if(id==='keyboard'&&roundToggleOn&&!activeKeyboard) {
+      return null;
+    };
+
     return this.props.renderPanels[id]({
       ...childProps,
       ...gameProps
@@ -149,6 +164,7 @@ export default class Hangman extends Component {
       <div className="layout" id="hangman">
         <Container id="hangman-main">
           <Panel id="mystery"  {...childProps} />
+          <Panel id="gallows"  {...childProps} />
           <Panel id="guesses"  {...childProps} />
           <Panel id="keyboard" {...childProps} />
         </Container>

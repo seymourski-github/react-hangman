@@ -5,7 +5,11 @@ import Hangman from '../view';
 
 const props = {
   alphabet: ['a','b','c','d','e','f','g','h','i','j','k','l','m'],
-  mystery: 'My secret word'
+  mystery: 'My secret word',
+  display: {
+    gallowsOn: false,
+    roundToggleOn: true
+  },
 };
 
 describe('<Hangman /> Component', function() {
