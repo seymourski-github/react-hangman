@@ -27,9 +27,12 @@ export default class Hangman extends Component {
     super(props);
 
     this.state = {
+      activeLetter: null,
       activeLetters: null,
+      activeRound: null,
       guessing: '',
-      guessed: ''
+      guessed: '',
+      result: null
     };
 
     this.makeLetters = props => (
@@ -46,24 +49,17 @@ export default class Hangman extends Component {
     });
 
     this.mapGameProps = (nextProps, nextState) => {
-      const { alphabet, maxRounds, mysteryWord } = nextProps;
-      const { activeLetter, activeLetters } = nextState;
-
-      const getActiveWord = () =>
-        mysteryWord.toLowerCase();
-
-      const getActiveRound = () =>
-        activeLetters && nextProps.alphabet.filter(item =>
-          activeLetters[item]).length;
+      const { maxRounds } = nextProps;
+      const { activeLetter, activeLetters, activeRound, result } = nextState;
 
       const getActiveKeyboard = () =>
-        !activeLetter && activeLetters && getActiveRound()<maxRounds;
+        !result && !activeLetter && activeRound<maxRounds;
 
       const getActiveGuesses = () =>
-        activeLetter && getActiveRound()<=maxRounds;
+        !result && activeLetter && activeRound<=maxRounds;
 
       const getActiveKeys = () =>
-        alphabet.reduce((keys, name) => {
+        nextProps.alphabet.reduce((keys, name) => {
         keys.push({ name,
           disabled: !getActiveKeyboard()||activeLetters[name]
         });
@@ -71,12 +67,10 @@ export default class Hangman extends Component {
       }, []);
 
       return {
-        activeGuesses: getActiveGuesses(),
         activeKeys: getActiveKeys(),
         activeKeyboard: getActiveKeyboard(),
-        activeRound: getActiveRound(),
-        activeWord: getActiveWord(),
-        mysteryWord, maxRounds,
+        activeGuesses: getActiveGuesses(),
+        maxRounds,
         ...nextState
       }
     };
@@ -103,19 +97,24 @@ export default class Hangman extends Component {
     const { action, name, value } = e;
 
     const {
-      onGameBegin, onGuessSubmit, onLetterSelect
+      onGameBegin, onGameResult, onGuessSubmit, onLetterSelect
     } = setNextState;
 
     switch(action) {
       case actions.GAME_BEGIN:
         return this.setState((prevState, props) => {
-          return onGameBegin(prevState, props, {
-            activeLetters: this.makeLetters
-          });
+          const newVal=this.makeLetters(props);
+          return onGameBegin(prevState, props, newVal);
         });
       case actions.GUESS_SUBMIT:
         return this.setState((prevState, props) => {
-          return onGuessSubmit(prevState, props, value);
+          if(value.toLowerCase()===props.mysteryWord.toLowerCase()) {
+            return onGameResult(prevState, props, actions.GAME_WON);
+          } else if(prevState.activeRound >= props.maxRounds) {
+            return onGameResult(prevState, props, actions.GAME_LOST);
+          } else {
+            return onGuessSubmit(prevState, props, value);
+          }
         });
       case actions.LETTER_SELECT:
         return this.setState((prevState, props) => {

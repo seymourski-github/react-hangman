@@ -16,7 +16,8 @@ const defaultProps = {
   labels: {
     keyboard: 'Choose a letter',
     guessing: 'Make a guess',
-    guessed: 'ok'
+    guessed: 'ok',
+    loser: 'YOU LOSE !!'
   },
   renderPanels: {
     gallows: props => (

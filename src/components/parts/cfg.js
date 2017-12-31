@@ -40,12 +40,22 @@ const itemsList = {
   },
   leftLeg: {
     config: { x: 10, y: 10, points:[120, 140, 100, 165], stroke: '#000', strokeWidth: 3 },
-    type: Line,
+    type: Line
   },
   rightLeg: {
     config: { x: 10, y: 10, points:[120, 140, 140, 165], stroke: '#000', strokeWidth: 3 },
     type: Line,
-    text: '!!! Last guess !!!'
+    text: 'Last guess!'
+  },
+  end: {
+    config: { x: 10, y: 10, points:[120, 140, 140, 165], stroke: '#000', strokeWidth: 3 },
+    type: Line,
+    text: 'Game Over!!'
+  },
+  winner: {
+    config: { x: 10, y: 10, points:[120, 140, 140, 165], stroke: '#000', strokeWidth: 3 },
+    type: Line,
+    text: 'Winner!!!!'
   },
 };
 
