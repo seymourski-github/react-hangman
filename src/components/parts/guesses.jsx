@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container, Input, Label } from '../../components';
 
-export const Guesses = props => {
-
-  const { action, disabled, id, labels, guessing, handleAction } = props;
-
-  const mapProps = name => ({
+const mapProps = (name, props) => {
+  const { disabled, guessing, labels, handleAction } = props;
+  return {
     name, handleAction, disabled,
     handleChange: handleAction,
     text: labels[name],
     value: guessing
-  });
+  };
+};
 
+export const Guesses = props => {
+  const { action, disabled, id, labels } = props;
   return (
     <Container flex="row" id={id}>
       <Label alignSelf="flex-end" flexItem="100%" htmlFor="guessing"

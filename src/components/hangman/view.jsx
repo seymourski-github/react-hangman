@@ -161,7 +161,7 @@ export default class Hangman extends Component {
     const hideKeyboard = roundToggleOn&&!activeKeyboard;
 
     if((id==='gallows'&& !gallowsOn) || (id==='guesses' && hideGuesses)
-      ||( id==='keyboard' && hideKeyboard)) {
+      || ( id==='keyboard' && hideKeyboard)) {
       return null;
     }
 
