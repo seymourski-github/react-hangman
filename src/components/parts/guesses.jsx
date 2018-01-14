@@ -1,49 +1,69 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Container, Input, Label } from '../../components';
+import { Field } from '../../components';
 
-const mapProps = (name, props) => {
-  const { disabled, guessing, labels, handleAction } = props;
-  return {
-    name, handleAction, disabled,
-    handleChange: handleAction,
-    text: labels[name],
-    value: guessing
-  };
-};
-
-export const Guesses = props => {
-  const { action, disabled, id, labels } = props;
-  return (
-    <Container flex="row" id={id}>
-      <Label alignSelf="flex-end" flexItem="100%" htmlFor="guessing"
-        text={labels.guessing}
-        visible={!disabled}
-      />
-      <Input {...mapProps('guessing', props)} autoFocus flexItem="1 0 auto" />
-      <Button {...mapProps('guessed', props)} action={action} flexItem="none" />
-    </Container>
-  );
-
-};
+export const Guesses = props => (
+  <Field id={`${props.name}-field`}
+    action={props.action}
+    disabled={props.disabled}
+    labels={props.labels}
+    names={props.names}
+    name={props.name}
+    nodes={props.nodes}
+    value={props.value}
+    handleButton={props.handleAction}
+    handleChange={props.handleAction}
+  />
+);
 
 Guesses.propTypes = {
-  handleAction: PropTypes.func,
-  action: PropTypes.string.isRequired,
+  action: PropTypes.string,
   disabled: PropTypes.bool,
-  guessing: PropTypes.string,
-  guessed: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  labels: PropTypes.object,
+  labels: PropTypes.shape({
+    button: PropTypes.string,
+    input: PropTypes.string, //placeholder
+    label: PropTypes.string,
+  }),
+  nodes: PropTypes.shape({
+    button: PropTypes.bool,
+    input: PropTypes.bool,
+    label: PropTypes.bool,
+  }),
+  names: PropTypes.shape({
+    button: PropTypes.string,
+    input: PropTypes.string
+  }),
+  name: PropTypes.string.isRequired,
+  styles: PropTypes.shape({
+    button: PropTypes.object,
+    input: PropTypes.object,
+    label: PropTypes.object,
+  }),
+  value: PropTypes.oneOfType([
+    PropTypes.number, PropTypes.string
+  ]),
+  handleButton: PropTypes.func,
+  handleChange: PropTypes.func
 };
 
 Guesses.defaultProps = {
-  handleAction: () => console.log('handleAction not setup'),
   action: 'ACTION_OF_BUTTON',
-  guessing: 'guess onChange sent via handleAction',
-  guessed: 'guessed onClick sent via handleAction & action',
+  disabled: false,
   labels: {
-    input: 'Make a guess',
+    label: 'Make a guess',
     button: 'ok'
   },
+  names: {
+    button: 'guessed',
+    input: 'guessing'
+  },
+  name: 'guesses',
+  styles: {
+    button: {},
+    input: {},
+    label: {}
+  },
+  value: '',
+  handleButton: () => console.log('handleButton not setup'),
+  handleChange: () => console.log('handleChange not setup'),
 };

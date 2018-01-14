@@ -10,9 +10,10 @@ const onClick = props => {
 };
 
 const mapProps = ({
-  action, className, disabled, label, name, style, text, type, value
+  action, className, disabled, id, label, name, style, text, type, value
 }) => ({
   children: text||name,
+  id: id || name,
   className, disabled, name, style, type, value
 });
 

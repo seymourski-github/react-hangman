@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -9,14 +13,18 @@ body {
   font: 400 14px/1.6 "Open Sans",sans-serif;
 }
 
+body > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 
 #hangman {
-  height: 96vh;
-  margin: 2vh auto;
   border: 1px solid #ddd;
-  width: inherit;
+  max-height: 640px;
   max-width: 640px;
-  justify-content: space-between;
 }
 
 #footer {
@@ -31,62 +39,95 @@ body {
 }
 
 #mystery {
-  height: 50px;
-  flex: 0 0 100%;
+  max-height: 68px;
 }
 
-#mystery-content {
-  align-items: center;
-  justify-content: center;
+#gallows {
+  max-height: 240px;
+  max-width: 240px;
+  background-color: #c1d2fd;
 }
 
 #guesses,
 #keyboard {
-  flex: 0 0 60%;
-  max-width: 352px;
-  min-width: 352px;
-  max-height: 34%;
   min-height: 90px;
+  min-width: 352px;
+  max-height: 160px;
+  max-width: 352px;
 }
 
-#guesses > .panel-content {
-  margin: 0 auto;
-  width: 80%;
-}
-
-#gallows {
-  flex: 0 0 36%;
-  align-self: flex-start;
-  background-color: #c1d2fd;
+#guesses-field,
+#keyboard-content,
+#mystery-content  {
+  -ms-flex-line-pack: center;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .layout {
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
-.layout .column {
+.layout .column,
+.layout .row,
+.layout [class*="-flex"] {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
 }
 
-.layout .row {
-  display: flex;
+.layout .column,
+.layout [class*="-column"] {
+  flex-flow: column nowrap;
+  -ms-flex-flow: column nowrap;
+}
+
+.layout .row,
+.layout [class*="-row"] {
   flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
 }
 
-.layout > .row {
-    justify-content: space-around;
+.layout [class*="-content"] {
+  align-content: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  -ms-flex-line-pack: inherit;
+  -ms-flex-align: inherit;
+  -ms-flex-pack: inherit;
+}
+
+.layout [class*="-box"] {
+  padding: 0 1em;
+}
+
+.layout > .container {
+  justify-content: space-around;
+}
+
+.layout > .column {
+  height: inherit;
+  width: inherit;
+}
+
+.panel {
+  flex: unset;
+  height: 100%;
+  width: 100%;
 }
 
 .panel-content {
-  height: 100%;
+  height: inherit;
+  width: inherit;
 }
 
-.panel-content > .row {
+.panel-content > .container {
   height: inherit;
-  align-content: center;
-  justify-content: center;
+  width: inherit;
 }

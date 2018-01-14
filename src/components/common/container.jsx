@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const getStyles = props => {
-  const { flexDirection, flexItem, flexWrap, style } = props;
+  const { flexItem, style } = props;
   if(!style && !flexItem) return;
   return {
     ...style,
-    flex: flexItem,
-    flexDirection: flexDirection,
-    flexWrap: flexWrap
+    flex: flexItem
   };
 };
 
@@ -32,12 +30,11 @@ export const Container = props => {
 };
 
 Container.propTypes = {
-  flex: PropTypes.oneOfType([
+  flexItem: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string
   ]),
   flexDirection: PropTypes.string,
-  flexWrap: PropTypes.string,
   style: PropTypes.object,
   id: PropTypes.string
 };
@@ -45,8 +42,6 @@ Container.propTypes = {
 Container.defaultProps = {
   className: 'container',
   id: null,
-  flex: false,
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  flexItem: false,
   style: null
 };

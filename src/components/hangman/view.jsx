@@ -175,13 +175,13 @@ export default class Hangman extends Component {
     const { childProps } = this;
     return (
       <div className="layout" id="hangman">
-        <Container flex={true} flexItem={'1 1 100%'}>
+        <Container flex={'row'} flexItem={'12'}>
           <Panel id="mystery"  {...childProps} />
           <Panel id="gallows"  {...childProps} />
           <Panel id="guesses"  {...childProps} />
           <Panel id="keyboard" {...childProps} />
         </Container>
-        <Container flex={true} flexItem={'none'}>
+        <Container flex={'row'} flexItem={'none'}>
           <Panel id="footer"   {...childProps} />
         </Container>
       </div>

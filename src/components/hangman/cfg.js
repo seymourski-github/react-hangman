@@ -22,8 +22,11 @@ const defaultProps = {
       return '';
     },
     keyboard: 'Choose a letter',
-    guessing: 'Make a guess',
-    guessed: 'ok',
+    guesses: {
+      button: 'ok',
+      input: '',
+      label: 'Make a guess'
+    },
     loser: 'YOU LOSE !!',
     restart: 'Restart'
   },
@@ -40,12 +43,16 @@ const defaultProps = {
         height={260} width={240}
       />
     ),
-    guesses: props => (
-      <Guesses {...props}
-        action={actions.GUESS_SUBMIT}
-        disabled={!props.activeGuesses}
-      />
-    ),
+    guesses: props => {
+      return (
+        <Guesses {...props} name={'guesses'}
+          action={actions.GUESS_SUBMIT}
+          disabled={!props.activeGuesses}
+          labels={props.labels.guesses}
+          value={props.guessing}
+        />
+      );
+    },
     keyboard: props => (
       <Keyboard {...props}
         action={actions.LETTER_SELECT}

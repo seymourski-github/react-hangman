@@ -1,0 +1,15 @@
+
+.field {
+  flex: unset;
+  height: 100%;
+  width: 100%;
+}
+
+.field-content {
+  height: inherit;
+  width: inherit;
+}
+
+.field-content .label {
+  order: -1;
+}
