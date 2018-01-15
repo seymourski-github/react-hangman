@@ -24,6 +24,7 @@ exports[`<Guesses /> Component renders and matches our snapshot 1`] = `
   <button
     className="button"
     disabled={false}
+    id="restart"
     name="restart"
     onClick={[Function]}
     style={null}

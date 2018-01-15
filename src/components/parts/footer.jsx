@@ -13,7 +13,7 @@ export const Footer = props => {
   return (
     <Container flex={true} id={id} >
       <Label text={counter} visible={!result} />
-      <Button action={action} name={name} handleAction={handleAction} />
+      <Button action={action} name={name} handleClick={handleAction} />
     </Container>
   );
 };

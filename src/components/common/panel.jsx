@@ -5,7 +5,7 @@ const renderProps = (id, props) => {
   if(!props.render) return null;
   return props.render(id, {
     ...props,
-    id: `${id}-content`
+    id:`${id}-content`
   });
 };
 
@@ -15,7 +15,7 @@ export const Panel = props => {
 
   if(!content && !children) return null;
   return (
-    <div className={className} id={id}>
+    <div className={className} id={`${id}-panel`}>
       <div className={`${className}-content`}>
         {children || content}
       </div>
@@ -30,10 +30,12 @@ Panel.propTypes = {
     PropTypes.string
   ]),
   id: PropTypes.string.isRequired,
-  render: PropTypes.func
+  render: PropTypes.func,
+  getId: PropTypes.func
 };
 
 Panel.defaultProps = {
   className: 'panel',
-  render: () => null
+  render: () => null,
+  getId: props => `${props.id}-panel`
 };

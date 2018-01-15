@@ -27,9 +27,8 @@ body > div {
   max-width: 640px;
 }
 
-#footer {
+#footer-panel {
   height: 48px;
-  width: 100%;
   padding: 0 2vh;
 }
 
@@ -38,18 +37,18 @@ body > div {
   justify-content: space-between;
 }
 
-#mystery {
+#mystery-panel {
   max-height: 68px;
 }
 
-#gallows {
+#gallows-panel {
   max-height: 240px;
   max-width: 240px;
   background-color: #c1d2fd;
 }
 
-#guesses,
-#keyboard {
+#guesses-panel,
+#keyboard-panel {
   min-height: 90px;
   min-width: 352px;
   max-height: 160px;

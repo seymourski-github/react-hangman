@@ -4,6 +4,7 @@ exports[`<Button /> Component renders and matches our snapshot 1`] = `
 <button
   className="button"
   disabled={false}
+  id="myButton"
   name="myButton"
   onClick={[Function]}
   style={null}

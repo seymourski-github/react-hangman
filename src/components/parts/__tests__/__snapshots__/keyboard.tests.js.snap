@@ -24,6 +24,7 @@ exports[`<Keyboard /> Component renders and matches our snapshot 1`] = `
   <button
     className="button"
     disabled={false}
+    id="a"
     name="a"
     onClick={[Function]}
     style={null}
@@ -35,6 +36,7 @@ exports[`<Keyboard /> Component renders and matches our snapshot 1`] = `
   <button
     className="button"
     disabled={false}
+    id="b"
     name="b"
     onClick={[Function]}
     style={null}
@@ -46,6 +48,7 @@ exports[`<Keyboard /> Component renders and matches our snapshot 1`] = `
   <button
     className="button"
     disabled={false}
+    id="c"
     name="c"
     onClick={[Function]}
     style={null}

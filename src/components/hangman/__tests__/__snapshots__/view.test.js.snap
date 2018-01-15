@@ -10,15 +10,13 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
     id={null}
     style={
       Object {
-        "flex": "1 1 100%",
-        "flexDirection": "row",
-        "flexWrap": "wrap",
+        "flex": "12",
       }
     }
   >
     <div
       className="panel"
-      id="mystery"
+      id="mystery-panel"
     >
       <div
         className="panel-content"
@@ -228,7 +226,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
     </div>
     <div
       className="panel"
-      id="keyboard"
+      id="keyboard-panel"
     >
       <div
         className="panel-content"
@@ -256,6 +254,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="a"
             name="a"
             onClick={[Function]}
             style={null}
@@ -267,6 +266,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="b"
             name="b"
             onClick={[Function]}
             style={null}
@@ -278,6 +278,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="c"
             name="c"
             onClick={[Function]}
             style={null}
@@ -289,6 +290,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="d"
             name="d"
             onClick={[Function]}
             style={null}
@@ -300,6 +302,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="e"
             name="e"
             onClick={[Function]}
             style={null}
@@ -311,6 +314,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="f"
             name="f"
             onClick={[Function]}
             style={null}
@@ -322,6 +326,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="g"
             name="g"
             onClick={[Function]}
             style={null}
@@ -333,6 +338,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="h"
             name="h"
             onClick={[Function]}
             style={null}
@@ -344,6 +350,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="i"
             name="i"
             onClick={[Function]}
             style={null}
@@ -355,6 +362,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="j"
             name="j"
             onClick={[Function]}
             style={null}
@@ -366,6 +374,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="k"
             name="k"
             onClick={[Function]}
             style={null}
@@ -377,6 +386,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="l"
             name="l"
             onClick={[Function]}
             style={null}
@@ -388,6 +398,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="m"
             name="m"
             onClick={[Function]}
             style={null}
@@ -406,14 +417,12 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
     style={
       Object {
         "flex": "none",
-        "flexDirection": "row",
-        "flexWrap": "wrap",
       }
     }
   >
     <div
       className="panel"
-      id="footer"
+      id="footer-panel"
     >
       <div
         className="panel-content"
@@ -439,6 +448,7 @@ exports[`<Hangman /> Component renders and matches our snapshot 1`] = `
           <button
             className="button"
             disabled={false}
+            id="restart"
             name="restart"
             onClick={[Function]}
             style={null}

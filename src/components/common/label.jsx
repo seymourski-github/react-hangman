@@ -1,49 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { compose, defaultProps, setPropTypes } from 'recompose';
+import { withStyleProps, withFlexItemProps } from './enhancers';
 
-const mapProps = ({
-  children, className, disabled, hidden, htmlFor, text
-}) => ({
-  children: text||children,
-  className, disabled, hidden, htmlFor
-});
-
-const mapStyle = ({ alignSelf, style, flexItem, visible }) => ({
-  ...style,
-  alignSelf,
-  flex: flexItem,
-  visibility: visible ? 'visible':'hidden'
-});
-
-export const Label = props => {
+const Base = props => {
+  const {
+    children, className, disabled, hidden, htmlFor, style, text
+  } = props;
   return (
-    <label {...mapProps(props)}
-      style={mapStyle(props)}
+    <label className={className}
+      children={text||children}
+      disabled={disabled}
+      hidden={hidden}
+      htmlFor={htmlFor}
+      style={style}
     />
   );
 };
 
-Label.propTypes = {
-  alignSelf: PropTypes.string,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  flexItem: PropTypes.string,
-  hidden: PropTypes.bool,
-  style:  PropTypes.object,
-  visible: PropTypes.bool,
-  text: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string
-  ]),
-};
-
-Label.defaultProps = {
-  alignSelf: '',
-  className: 'label',
-  disabled: false,
-  hidden: false,
-  flex: '',
-  style:  null,
-  text: '',
-  visible: true
-}
+export const Label = compose(
+  defaultProps({
+    className: 'label',
+    disabled: false,
+    hidden: false,
+  }),
+  setPropTypes({
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    hidden: PropTypes.bool,
+    htmlFor: PropTypes.string,
+    text: PropTypes.string
+  }),
+  withStyleProps,
+  withFlexItemProps
+)(Base);

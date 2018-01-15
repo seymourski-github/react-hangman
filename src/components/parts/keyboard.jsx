@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Container, Label } from '../common';
+import { Button, Container, Label } from '../../components';
 
 export const Keyboard = props => {
   const { action, disabled, keys, id, handleAction, label } = props;
 
   const buttons = keys.map(key =>
-    <Button {...key}
+    <Button {...key} flexItem={'0 0 2em'}
       key={key.name}
       disabled={key.disabled||disabled}
       action={action}
-      handleAction={handleAction}
+      handleClick={handleAction}
     />);
 
   return (

@@ -1,17 +1,37 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Input, Label } from '../../components';
+import { Button, Input, Label } from '../../common';
 import './field.css';
 
+const mapChildProps = (child, props) => {
+  const { value } = props;
+  return {
+    id: props.getId(child, props),
+    name: (child!=='label') && props.getName(child, props),
+    style: props.getStyle(child, props),
+    text: props.getText(child, props),
+    value: (child!=='label') && value
+  };
+};
+
 const defaultProps = {
-  getId: (item, props) => {
-    return `${props.name}-${item}`;
+  getId: (child, props) => {
+    return `${props.name}-${child}`;
   },
-  getStyle: (item, props) => {
-    return props.styles[item];
+  getName: (child, props) => {
+    return props.names[child];
+  },
+  getStyle: (child, props) => {
+    return props.styles[child];
+  },
+  getText: (child, props) => {
+    return props.labels[child];
   },
   handleChange: () => console.log('handleChange not setup'),
   handleButton: false,
+  fieldButton: true,
+  fieldInput: true,
+  fieldLabel: true,
   labels: {
     button: 'ok',
     label: 'Type n submit',
@@ -20,11 +40,6 @@ const defaultProps = {
   names: {
     button: 'buttonNameNeedsAdding',
     input: 'inputNameNeedsAdding'
-  },
-  nodes: {
-    button: true,
-    input: true,
-    label: true,
   },
   styles: {
     button: {},
@@ -38,12 +53,21 @@ export default class Field extends Component {
   static defaultProps = defaultProps;
   static propTypes = {
     getId: PropTypes.func,
+    getName: PropTypes.func,
     getStyle: PropTypes.func,
-    handleButton: PropTypes.oneOfType([
-      PropTypes.bool, PropTypes.func
-    ]),
+    getText: PropTypes.func,
+    handleButton: PropTypes.func,
     handleChange: PropTypes.func,
     action: PropTypes.string,
+    fieldButton: PropTypes.oneOfType([
+      PropTypes.bool, PropTypes.node
+    ]),
+    fieldInput: PropTypes.oneOfType([
+      PropTypes.bool, PropTypes.node
+    ]),
+    fieldLabel: PropTypes.oneOfType([
+      PropTypes.bool, PropTypes.node
+    ]),
     id: PropTypes.string.isRequired,
     labels: PropTypes.shape({
       button: PropTypes.string,
@@ -54,20 +78,6 @@ export default class Field extends Component {
       button: PropTypes.string.isRequired,
       input: PropTypes.string.isRequired
     }).isRequired,
-    nodes: PropTypes.shape({
-      button: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.node
-      ]),
-      input: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.node
-      ]),
-      label: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.node
-      ]),
-    }),
     styles: PropTypes.shape({
       button: PropTypes.object,
       input: PropTypes.object,
@@ -82,64 +92,47 @@ export default class Field extends Component {
   * render methods ...
   */
 
-  getId = item => {
-    return this.props.getId(item, this.props);
-  };
-
-  getStyle = item => {
-    return this.props.getStyle(item, this.props);
-  };
-
-  getProps = item => {
-    return {
-      id: this.getId(item),
-      name: this.props.names[item],
-      style: this.getStyle(item),
-      text: this.props.labels[item],
-    };
-  };
-
   renderButton = props => {
-    const { action, disabled, nodes, value, handleButton } = props;
+    const { action, disabled, fieldButton, value, handleButton } = props;
 
-    if(handleButton===false) {
+    if(!handleButton||fieldButton===false) {
       return null;
-    } else if(nodes.button!==true) {
-      return nodes.button;
+    } else if(fieldButton!==true) {
+      return fieldButton;
     }
 
     return (
-      <Button {...this.getProps('button')} flexItem="none"
+      <Button {...mapChildProps('button', props)}
         action={action}
         disabled={disabled}
         value={value}
-        handleAction={handleButton}
+        handleClick={handleButton}
       />
     );
   };
 
   renderInput = props => {
-    const { disabled, labels, nodes, value, handleChange } = props;
+    const { autoFocus, disabled, labels, fieldInput, handleChange } = props;
 
-    if(nodes.input!==true) return nodes.input;
+    if(fieldInput!==true) return fieldInput;
     return (
-      <Input {...this.getProps('input')}
-        autoFocus flexItem="auto"
+      <Input {...mapChildProps('input', props)}
+        flexItem="auto"
+        autoFocus={autoFocus}
         disabled={disabled}
         placeholder={labels.placeholder||labels.input}
         handleChange={handleChange}
-        value={value}
       />
     );
   };
 
   renderLabel = props => {
-    const { nodes } = props;
-    if(nodes.label!==true) return nodes.label;
+    const { fieldLabel } = props;
+    if(fieldLabel!==true) return fieldLabel;
     return (
-      <Label {...this.getProps('label')}
+      <Label {...mapChildProps('label', props)}
         flexItem="1 1 100%"
-        htmlFor={this.getId('input')}
+        htmlFor={props.getId('input', props)}
         visible={!props.disabled}
       />
     );
